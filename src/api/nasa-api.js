@@ -8,11 +8,11 @@ export async function fetchNasaApiImage() {
       `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`
     );
 
-    const { title, url, explanation } = response.data;
-    return { title, url, explanation };
+    const { title, url, explanation, date, copyright } = response.data;
+    return { title, url, explanation, date, copyright };
 
   } catch (error) {
     console.error('NASA APIリクエストエラー:', error);
-    return { title: '', url: '', explanation: '' };
+    return { title: '', url: '', explanation: '', date: '', copyright: '' };
   }
 }
