@@ -20,16 +20,21 @@ const apiData = await fetchNasaApiImage();
       <h2 class="title-name">{apiData.title}</h2>
       <p class="text-date">{apiData.date.replace(/-/g, '/')}</p>
       <p class="text-explanation">{apiData.explanation}</p>
-			<strong>by {apiData.copyright}</strong>
+			<strong>copyright by {apiData.copyright}</strong>
 		</div>
 		<div>
 		</div>
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
-				title="View NASA API"
-				body="Astronaut, launches to the space"
+				title="Go to the space"
+				body="View NASA Open APIs"
 			/>
+      <Card
+        href="https://sorae.info/"
+        title="Go to Sky"
+        body="View Japanese Universe Portal Site"
+      />
 		</ul>
 	</main>
 </Layout>
@@ -37,11 +42,9 @@ const apiData = await fetchNasaApiImage();
 <style>
 	main {
 		margin: auto;
-		padding: 1rem;
+		padding: 60px 0 120px;
 		width: 800px;
 		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
 		line-height: 1.6;
 	}
   .image {
