@@ -2,7 +2,7 @@ import axios from "axios";
 
 const NASA_API_KEY = 'ZQKrkabQ5a9mlgFzWDcQJdjXHUPlEJej3TQhO14D';
 
-export async function fetchNasaApiImage() {
+export async function fetchNasaApiData() {
   try {
     const response = await axios.get(
       `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`

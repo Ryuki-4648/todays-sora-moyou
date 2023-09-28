@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import { fetchNasaApiImage } from '../api/nasa-api';
+import { fetchNasaApiData } from '../api/nasa-api';
+import { fetchNasaYesterdayApiData } from '../api/nasa-yesterday-api';
 
-const apiData = await fetchNasaApiImage();
-
+const apiData = await fetchNasaApiData();
+const yesterdayApiData = await fetchNasaYesterdayApiData();
 // Astro.jsについて
 // コードフェンス（—-）内のコードは静的HTMLに変換される。サーバー側で実行されるもので、ブラウザで実行されるものではない。
 // .astro部品にはJavaScriptロジックを埋め込めない。
@@ -13,14 +14,16 @@ const apiData = await fetchNasaApiImage();
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<p><span class="text-gradient">by NASA Open APIs</span></p>
 		<h1 class="title-main">今日の宇宙模様</h1>
+    <p class="text-center"><span class="text-gradient">by NASA Open APIs</span></p>
 		<div class="instructions">
       <img src={apiData.url} alt={apiData.title} class="image" />
       <h2 class="title-name">{apiData.title}</h2>
       <p class="text-date">{apiData.date.replace(/-/g, '/')}</p>
       <p class="text-explanation">{apiData.explanation}</p>
 			<strong>copyright by {apiData.copyright}</strong>
+      <a href=`${yesterdayApiData.url}`>View yesterday image</a>
+      <p>{yesterdayApiData.url}</p>
 		</div>
 		<div>
 		</div>
@@ -59,6 +62,9 @@ const apiData = await fetchNasaApiImage();
 		height: auto;
 		z-index: -1;
 	}
+  .text-center {
+    text-align: center;
+  }
 	h1 {
 		font-size: 1.4rem;
 		font-weight: 400;
@@ -78,9 +84,11 @@ const apiData = await fetchNasaApiImage();
 		-webkit-text-fill-color: transparent;
 		background-size: 400%;
 		background-position: 0%;
+    font-size: 1rem;
+    letter-spacing: .08em;
 	}
 	.instructions {
-		margin-bottom: 2rem;
+		margin: 60px auto 60px;
 		border: 1px solid rgba(var(--accent-light), 25%);
 		//background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
 		padding: 1.5rem;
