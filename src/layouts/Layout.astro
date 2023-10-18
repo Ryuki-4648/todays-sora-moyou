@@ -29,13 +29,20 @@ interface Props {
 			45deg,
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
+      rgb(var(--accent-dark)) 30%,
 			white 60%
 		);
+    --accent-color01: 14, 144, 171;
+    --accent-color02: 0, 135, 164;
+    --accent-color03: 11, 112, 144;
+    --accent-color04: 10, 96, 123;
+    --accent-color05: 0, 74, 104;
+    --accent-gold01: 184, 170, 119;
 	}
 	html {
 		font-family: system-ui, sans-serif;
 		//background: #13151a;
-		background: linear-gradient(rgba(var(--accent-dark), 95%), rgba(var(--accent-dark), 60%));
+		background: linear-gradient(rgba(var(--accent-color05), 95%), rgba(var(--accent-color01), 90%));
     font-family: 'Montserrat', sans-serif;
 	}
 	code {

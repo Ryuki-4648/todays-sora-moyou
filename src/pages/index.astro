@@ -5,7 +5,7 @@ import { fetchNasaApiData } from '../api/nasa-api';
 import { fetchNasaYesterdayApiData } from '../api/nasa-yesterday-api';
 
 const apiData = await fetchNasaApiData();
-const yesterdayApiData = await fetchNasaYesterdayApiData();
+// const yesterdayApiData = await fetchNasaYesterdayApiData();
 // コードフェンス（—-）内のコードは静的HTMLに変換される。サーバー側で実行されるもので、ブラウザで実行されるものではない。
 // .astro部品にはJavaScriptロジックを埋め込めない。
 ---
@@ -17,17 +17,16 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
 <Layout title="Welcome to Astro.">
 	<main>
     <h1 class="title-main"><img src="../img/logo.png" alt="" /></h1>
-    <p class="text-center"><span class="text-gradient">by NASA Open APIs</span></p>
-    <p class="text-intro">今日の宇宙（そら）模様は、<br>NASA公式APIの画像を1日1枚取得して<br>表示するサービスです。</p>
+    <div class="animation-line"></div>
+    <p class="text-center text01"><span class="text-gradient">by NASA Open APIs</span></p>
+    <p class="text-intro">今日の宇宙（そら）模様は、<br>NASA公式APIの画像を1日1枚<br>表示するサービスです。</p>
 		<div class="instructions">
       <img src={apiData.url} alt={apiData.title} class="image" />
       <h2 class="title-name">{apiData.title}</h2>
       <p class="text-date">{apiData.date.replace(/-/g, '/')}</p>
       <p class="text-explanation">{apiData.explanation}</p>
       <p class="text-copy">Copyright by {apiData.copyright}</p>
-      <a href=`${yesterdayApiData.url}`>View yesterday image</a>
-      <p>{yesterdayApiData.url}</p>
-      <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="30" />
+      <!-- <a href=`${yesterdayApiData.url}`>View yesterday image</a> -->
 		</div>
 		<div>
 		</div>
@@ -49,7 +48,7 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
 <style>
 	main {
 		margin: auto;
-		padding: 60px 0 800px;
+		padding: 120px 0 800px;
 		width: 800px;
 		max-width: calc(100% - 2rem);
 		line-height: 1.6;
@@ -60,6 +59,9 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
   .text-center {
     text-align: center;
   }
+  .text01 {
+    margin: 0 auto 60px;
+  }
   .text-date {
     font-size: 1.2rem;
     letter-spacing: .1em;
@@ -69,9 +71,10 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
   }
   .text-intro {
     text-align: center;
-    font-size: .9rem;
-    color: rgb(var(--accent-light));
-    letter-spacing: .08em;
+    font-size: 1rem;
+    color: #c8c8c8;
+    letter-spacing: .15em;
+    line-height: 2.2;
   }
 	h1 {
 		font-size: 1.4rem;
@@ -97,14 +100,14 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
     letter-spacing: .08em;
 	}
 	.instructions {
-		margin: 60px auto 60px;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		padding: 1.5rem;
+		margin: 100px auto 60px;
+		border: 1px solid rgba(var(--accent-color01), 60%);
+		padding: 60px 50px;
 		border-radius: 8px;
 	}
 	.text-copy {
-		color: rgb(var(--accent-light));
-    font-weight: 500;
+		color: rgb(var(--accent-gold01));
+    font-weight: 400;
     letter-spacing: .08em;
 	}
 	.link-card-grid {
@@ -113,4 +116,43 @@ const yesterdayApiData = await fetchNasaYesterdayApiData();
 		gap: 2rem;
 		padding: 0;
 	}
+  .animation-line {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    margin: auto;
+    height: 100px;
+    width: 1px;
+    overflow: hidden;
+    transition: 1s cubic-bezier(0.22,0.61,0.36,1);
+    transform: rotate(45deg);
+  }
+  .animation-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background: linear-gradient(rgba(var(--accent-gold01), 95%), rgba(var(--accent-color01), 90%));
+    z-index: 10;
+    width: 1px;
+    height: 100%;
+    animation: scroll 2.4s infinite normal;
+}
+@keyframes scroll{
+  0%{
+    height:0;
+    top:0;
+    opacity: 0;
+  }
+  30%{
+    height:50px;
+    opacity: 1;
+  }
+  100%{
+    height:0;
+    top:50px;
+    opacity: 0;
+  }
+}
 </style>
