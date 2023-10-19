@@ -25,7 +25,7 @@ interface Props {
 		--accent: 96, 134, 207;
 		--accent-light: 131, 139, 166;
 		--accent-dark: 16, 27, 66;
-		--accent-gradient: linear-gradient(
+		--accent-gradient01: linear-gradient(
 			45deg,
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
@@ -38,6 +38,19 @@ interface Props {
     --accent-color04: 10, 96, 123;
     --accent-color05: 0, 74, 104;
     --accent-gold01: 184, 170, 119;
+    --accent-gradient02: linear-gradient(
+			45deg,
+			rgb(var(--accent-color01)),
+			rgb(var(--accent-color02)) ,
+      rgb(var(--accent-color05)) ,
+			white 60%
+		);
+    --accent-gradient03: linear-gradient(
+			45deg,
+      rgb(var(--accent-color01)) ,
+      rgb(var(--accent-gold01)) ,
+			white 60%
+		);
 	}
 	html {
 		font-family: system-ui, sans-serif;
@@ -45,6 +58,10 @@ interface Props {
 		background: linear-gradient(rgba(var(--accent-color05), 95%), rgba(var(--accent-color01), 90%));
     font-family: 'Montserrat', sans-serif;
 	}
+  body {
+    padding: 0;
+    margin: 0;
+  }
 	code {
 		font-family:
 			Menlo,
