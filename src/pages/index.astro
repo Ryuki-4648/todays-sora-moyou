@@ -73,6 +73,7 @@ const apiData = await fetchNasaApiData();
     left: 0;
     bottom: 0;
   }
+
   .content {
 		margin: auto;
 		padding: 120px 0 800px;
@@ -183,6 +184,41 @@ const apiData = await fetchNasaApiData();
     height:0;
     top:50px;
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main:before {
+    background: url('../img/bg01.png') no-repeat top -30px right -30px;
+    background-size: 250px;
+    width: 250px;
+    height: 180px;
+  }
+  main:after {
+    background: url('../img/bg02.png') no-repeat bottom left;
+    background-size: 250px;
+    width: 250px;
+    height: 200px;
+  }
+  .title-main {
+    width: 300px;
+    margin: 0 auto 40px;
+  }
+  .text-intro {
+    font-size: .8rem;
+  }
+  .instructions {
+    margin: 60px auto 30px;
+    padding: 40px 30px;
+  }
+  .title-name {
+    font-size: 1.6rem;
+  }
+  .text-date {
+    font-size: 1rem;
+  }
+  .text-explanation {
+    font-size: .9rem;
   }
 }
 </style>
