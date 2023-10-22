@@ -7,19 +7,20 @@ interface Props {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>今日の宇宙（そら）模様</title>
+		<title>今日の宇宙（そら）模様 | 今日の宇宙を見上げてみよう。</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 96, 134, 207;
@@ -53,24 +54,12 @@ interface Props {
 		);
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		//background: #13151a;
 		background: linear-gradient(rgba(var(--accent-color05), 95%), rgba(var(--accent-color01), 90%));
     font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
 	}
   body {
     padding: 0;
     margin: 0;
   }
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
 </style>

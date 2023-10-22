@@ -9,9 +9,9 @@ const { href, title, body } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href}>
+	<a href={href} target="_blank">
 		<h2>
-			{title}
+			{title}<span class="link-card-arrow">&rarr;</span>
 		</h2>
 		<p>
 			{body}
@@ -48,11 +48,20 @@ const { href, title, body } = Astro.props;
 		margin-bottom: 0;
     letter-spacing: .08em;
 	}
-	/* .link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient01);
+	.link-card:is(:hover, :focus-within) {
+		background: linear-gradient(rgba(var(--accent-color01), 65%), rgba(var(--accent-color02), 60%));
 	}
 	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	} */
+	}
+  .link-card-arrow {
+    margin: 0 0 0 10px;
+  }
+  @media screen and (max-width: 1024px) {
+    p {
+      font-size: .8rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+  }
 </style>

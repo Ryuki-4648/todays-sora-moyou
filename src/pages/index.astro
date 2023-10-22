@@ -17,7 +17,7 @@ const apiData = await fetchNasaApiData();
 <Layout title="Welcome to Astro.">
 	<main>
     <div class="content">
-      <h1 class="title-main"><img src="../img/logo.svg" alt="" /></h1>
+      <h1 class="title-main"><img src="./img/logo.svg" alt="" /></h1>
       <div class="animation-line"></div>
       <p class="text-center text01"><span class="text-gradient">by NASA Open APIs</span></p>
       <p class="text-intro">今日の宇宙（そら）模様は、<br>NASA公式APIの画像を1日1枚<br>表示するサービスです。</p>
@@ -26,7 +26,7 @@ const apiData = await fetchNasaApiData();
         <h2 class="title-name">{apiData.title}</h2>
         <p class="text-date">{apiData.date.replace(/-/g, '/')}</p>
         <p class="text-explanation">{apiData.explanation}</p>
-        <p class=""><span class="text-gradient">Copyright by {apiData.copyright}</span></p>
+        <p class="text-copy"><span class="text-gradient">Copyright by {apiData.copyright}</span></p>
         <!-- <a href=`${yesterdayApiData.url}`>View yesterday image</a> -->
       </div>
       <div>
@@ -38,11 +38,16 @@ const apiData = await fetchNasaApiData();
           body="View NASA Open APIs"
         />
         <Card
-          href="https://sorae.info/"
-          title="Go to Sky"
-          body="View Japanese Universe Portal Site"
+          href="https://astro.build/"
+          title="Get Started Astro"
+          body="View web framework Astro's Site"
         />
       </ul>
+
+      <div class="image01">
+        <a href="#"><img src="./img/img01.svg" alt="" /></a>
+      </div>
+      
     </div>
 	</main>
 </Layout>
@@ -76,7 +81,7 @@ const apiData = await fetchNasaApiData();
 
   .content {
 		margin: auto;
-		padding: 120px 0 800px;
+		padding: 120px 0 60px;
 		width: 800px;
 		max-width: calc(100% - 2rem);
   }
@@ -137,9 +142,10 @@ const apiData = await fetchNasaApiData();
 		border-radius: 8px;
 	}
 	.text-copy {
-		color: rgb(var(--accent-gold01));
+    text-align: center;
     font-weight: 400;
     letter-spacing: .08em;
+    margin: 60px auto 0;
 	}
 	.link-card-grid {
 		display: grid;
@@ -169,56 +175,70 @@ const apiData = await fetchNasaApiData();
     width: 1px;
     height: 100%;
     animation: scroll 2.4s infinite normal;
-}
-@keyframes scroll{
-  0%{
-    height:0;
-    top:0;
-    opacity: 0;
   }
-  30%{
-    height:50px;
-    opacity: 1;
+  @keyframes scroll{
+    0%{
+      height:0;
+      top:0;
+      opacity: 0;
+    }
+    30%{
+      height:50px;
+      opacity: 1;
+    }
+    100%{
+      height:0;
+      top:50px;
+      opacity: 0;
+    }
   }
-  100%{
-    height:0;
-    top:50px;
-    opacity: 0;
-  }
-}
 
-@media screen and (max-width: 1024px) {
-  main:before {
-    background: url('../img/bg01.png') no-repeat top -30px right -30px;
-    background-size: 250px;
-    width: 250px;
-    height: 180px;
+  .image01 {
+    margin: 600px auto 0;
+    text-align: center;
   }
-  main:after {
-    background: url('../img/bg02.png') no-repeat bottom left;
-    background-size: 250px;
-    width: 250px;
-    height: 200px;
+  .image01 img {
+    width: 180px;
   }
-  .title-main {
-    width: 300px;
-    margin: 0 auto 40px;
+
+  @media screen and (max-width: 1024px) {
+    main:before {
+      background: url('../img/bg01.png') no-repeat top -30px right -30px;
+      background-size: 250px;
+      width: 250px;
+      height: 180px;
+    }
+    main:after {
+      background: url('../img/bg02.png') no-repeat bottom left;
+      background-size: 250px;
+      width: 250px;
+      height: 200px;
+    }
+    .title-main {
+      width: 300px;
+      margin: 0 auto 40px;
+    }
+    .text-intro {
+      font-size: .8rem;
+    }
+    .instructions {
+      margin: 60px auto 30px;
+      padding: 40px 30px;
+    }
+    .title-name {
+      font-size: 1.6rem;
+    }
+    .text-date {
+      font-size: 1rem;
+    }
+    .text-explanation {
+      font-size: .9rem;
+    }
+    .image01 {
+    margin: 400px auto 0;
   }
-  .text-intro {
-    font-size: .8rem;
+    .image01 img {
+    width: 100px;
   }
-  .instructions {
-    margin: 60px auto 30px;
-    padding: 40px 30px;
   }
-  .title-name {
-    font-size: 1.6rem;
-  }
-  .text-date {
-    font-size: 1rem;
-  }
-  .text-explanation {
-    font-size: .9rem;
-  }
-}
 </style>
